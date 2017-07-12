@@ -82,6 +82,7 @@
     <Compile Include="Assets\gaguF.cs" />
     <Compile Include="Assets\offga.cs" />
     <Compile Include="Assets\onOff.cs" />
+    <Compile Include="Assets\tutorial\creatButtonAsDynamical.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
