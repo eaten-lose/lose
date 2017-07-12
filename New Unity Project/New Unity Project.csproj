@@ -76,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CharClic.cs" />
-    <Compile Include="Assets\charClick.cs" />
     <Compile Include="Assets\clic.cs" />
     <Compile Include="Assets\click.cs" />
     <Compile Include="Assets\dragTuto.cs" />
