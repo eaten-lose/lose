@@ -13,6 +13,10 @@ public class click : MonoBehaviour {
         if(howManyPlay==0)
         SceneManager.LoadScene("tuto");
     }
+    public void tomain()
+    {
+        SceneManager.LoadScene("tuto");
+    }
     // Update is called once per frame
     void Update () {
 		

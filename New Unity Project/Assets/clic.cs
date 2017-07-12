@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class clic : MonoBehaviour {
     public void ChangeSceen()
     {
-        SceneManager.LoadScene("las1");
+        SceneManager.LoadScene("tuto");
     }
 	// Use this for initialization
 	void Start () {

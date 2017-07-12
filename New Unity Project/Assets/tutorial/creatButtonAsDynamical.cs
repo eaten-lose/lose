@@ -14,15 +14,20 @@ public class creatButtonAsDynamical : MonoBehaviour {
         StreamReader sR = new StreamReader(read);
         str = sR.ReadLine();
         Debug.Log(str);
+        sR.Close();
+        read.Close();
         int num = int.Parse(str);
+       string[] namestr = new string[5] { "1","2","3","4","5"};
+
         for(int i=0;i<num;i++)
         {
             buttonOR = GameObject.Find("B");
             b = Instantiate(buttonOR);
             b.transform.parent = GameObject.Find("Canvas").transform;
             b.transform.Translate(new Vector3((float)196.5, 200+i*50, 30));
+            b.name = namestr[i];
         }
-
+        buttonOR.SetActive(false);
     }
     private void OnMouseDown()
     {
