@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using System.IO;
 
 public class creatButtonAsDynamical : MonoBehaviour {
@@ -13,6 +14,14 @@ public class creatButtonAsDynamical : MonoBehaviour {
         StreamReader sR = new StreamReader(read);
         str = sR.ReadLine();
         Debug.Log(str);
+        int num = int.Parse(str);
+        for(int i=0;i<num;i++)
+        {
+            buttonOR = GameObject.Find("B");
+            b = Instantiate(buttonOR);
+            b.transform.parent = GameObject.Find("Canvas").transform;
+            b.transform.Translate(new Vector3((float)196.5, 200+i*50, 30));
+        }
 
     }
     private void OnMouseDown()
