@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class clic : MonoBehaviour {
-    public void ChangeSceen()
+    public static void ChangeSceen()
     {
         SceneManager.LoadScene("tuto");
     }
