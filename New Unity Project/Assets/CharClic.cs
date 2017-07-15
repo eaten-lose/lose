@@ -43,6 +43,9 @@ public class CharClic : MonoBehaviour
         string[] namestr = new string[5] { "1", "2", "3", "4", "5" };
         GameObject b = GameObject.Find("2");
         DestroyObject(b);
+        b = GameObject.Find("0");
+        DestroyObject(b);
+
         car.enabled = true;
         charac.enabled = true;
         pan1.SetActiveRecursively(false);
@@ -58,7 +61,7 @@ public class CharClic : MonoBehaviour
         sR.Close();
         read.Close();
         int num = int.Parse(str);
-        string[] namestr = new string[5] { "1", "2", "3", "4", "5" };
+        string[] namestr = new string[5] { "0", "2", "3", "4", "5" };
         FileStream read1 = new FileStream("asd.txt", FileMode.Open);
         GameObject buttonOR;
         GameObject b;
@@ -91,11 +94,12 @@ public class CharClic : MonoBehaviour
         Debug.Log("LAS:"+a);
         FileStream read = new FileStream("da.txt", FileMode.Create);
         StreamWriter sw = new StreamWriter(read);
-        sw.WriteLine(1);
+        sw.WriteLine(a);
         sw.Close();
         read.Close();
         // SceneManager.LoadScene("test");
     }
+    /*
     public void button2()
     {
         Debug.Log("LAS:2");
@@ -106,7 +110,7 @@ public class CharClic : MonoBehaviour
         read.Close();
         SceneManager.LoadScene("test");
     }
-  
+  */
 
     // Update is called once per frame
     void Update()
