@@ -4,6 +4,7 @@ using UnityEngine;
 
 using System.IO;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CharClic : MonoBehaviour
 {
@@ -42,15 +43,54 @@ public class CharClic : MonoBehaviour
         charac.enabled = true;
         pan1.SetActiveRecursively(false);
     }
-    public void button1()
+    public void creatButton()
     {
-        Debug.Log("LAS:1");
+
+        string str;
+        FileStream read = new FileStream("da.txt", FileMode.Open);
+        StreamReader sR = new StreamReader(read);
+        str = sR.ReadLine();
+        Debug.Log(str);
+        sR.Close();
+        read.Close();
+        int num = int.Parse(str);
+        string[] namestr = new string[5] { "1", "2", "3", "4", "5" };
+        FileStream read1 = new FileStream("asd.txt", FileMode.Open);
+        GameObject buttonOR;
+        GameObject b;
+        StreamReader sR1 = new StreamReader(read1);
+        for (int i = 0; i < num; i++)
+        {
+
+            str = sR1.ReadLine();
+            Debug.Log(str);
+            buttonOR = GameObject.Find("B");
+
+
+            b = Instantiate(buttonOR);
+
+            b.transform.parent = GameObject.Find("Canvas").transform;
+            b.transform.Translate(new Vector3((float)196.5, 200 + i * 50, 30));
+            b.name = namestr[i];
+
+            GameObject text = GameObject.Find("Text");
+            Text tex = b.GetComponentInChildren<Text>();
+            tex.text = str;
+
+        }
+        sR1.Close();
+        read1.Close();
+        buttonOR.SetActive(false);
+    }
+    public void button(int a)
+    {
+        Debug.Log("LAS:"+a);
         FileStream read = new FileStream("da.txt", FileMode.Create);
         StreamWriter sw = new StreamWriter(read);
         sw.WriteLine(1);
         sw.Close();
         read.Close();
-        SceneManager.LoadScene("test");
+        // SceneManager.LoadScene("test");
     }
     public void button2()
     {
@@ -62,26 +102,8 @@ public class CharClic : MonoBehaviour
         read.Close();
         SceneManager.LoadScene("test");
     }
-    public void button3()
-    {
-        Debug.Log("LAS:3");
-        FileStream read = new FileStream("da.txt", FileMode.Create);
-        StreamWriter sw = new StreamWriter(read);
-        sw.WriteLine(3);
-        sw.Close();
-        read.Close();
-        SceneManager.LoadScene("test");
-    }
-    public void button4()
-    {
-        Debug.Log("LAS:4");
-        FileStream read = new FileStream("da.txt", FileMode.Create);
-        StreamWriter sw = new StreamWriter(read);
-        sw.WriteLine(4);
-        sw.Close();
-        read.Close();
-        SceneManager.LoadScene("test");
-    }
+  
+
     // Update is called once per frame
     void Update()
     {
