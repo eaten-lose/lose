@@ -35,17 +35,21 @@ public class CharClic : MonoBehaviour
         car.enabled = false;
         charac.enabled = false;
         pan1.SetActiveRecursively(true);
+        creatButton();
         
     }
     public void delet()
     {
+        string[] namestr = new string[5] { "1", "2", "3", "4", "5" };
+        GameObject b = GameObject.Find("2");
+        DestroyObject(b);
         car.enabled = true;
         charac.enabled = true;
         pan1.SetActiveRecursively(false);
+
     }
     public void creatButton()
     {
-
         string str;
         FileStream read = new FileStream("da.txt", FileMode.Open);
         StreamReader sR = new StreamReader(read);
@@ -59,18 +63,18 @@ public class CharClic : MonoBehaviour
         GameObject buttonOR;
         GameObject b;
         StreamReader sR1 = new StreamReader(read1);
+        buttonOR = GameObject.Find("B");
         for (int i = 0; i < num; i++)
         {
 
             str = sR1.ReadLine();
             Debug.Log(str);
-            buttonOR = GameObject.Find("B");
-
+            
 
             b = Instantiate(buttonOR);
 
-            b.transform.parent = GameObject.Find("Canvas").transform;
-            b.transform.Translate(new Vector3((float)196.5, 200 + i * 50, 30));
+            b.transform.parent = GameObject.Find("talk").transform;
+            b.transform.Translate(new Vector3((float)196.5, 400 + i * 50, 30));
             b.name = namestr[i];
 
             GameObject text = GameObject.Find("Text");
