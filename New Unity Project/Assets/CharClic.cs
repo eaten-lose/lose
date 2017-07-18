@@ -13,7 +13,7 @@ public class CharClic : MonoBehaviour
     public GameObject v1;
     public PolygonCollider2D charac;
     public static GameObject pan1;
-    int a = 1;
+    static int a = 1;
     // Use this for initialization
     public GameObject fas;
     public GameObject fas1;
@@ -40,7 +40,7 @@ public class CharClic : MonoBehaviour
     }
     public void delet()
     {
-        string[] namestr = new string[5] { "1", "2", "3", "4", "5" };
+        string[] namestr = new string[5] { "0", "2", "3", "4", "5" };
         GameObject b = GameObject.Find("2");
         DestroyObject(b);
         b = GameObject.Find("0");
@@ -49,14 +49,37 @@ public class CharClic : MonoBehaviour
         car.enabled = true;
         charac.enabled = true;
         pan1.SetActiveRecursively(false);
-
+    }
+    public void upper()
+    {
+        a += 1;
+    }
+    public void nextText()
+    {
+        GameObject text = GameObject.Find("quse");
+        string str="ERROR";
+        FileStream read = new FileStream("text.txt", FileMode.Open);
+        StreamReader sR = new StreamReader(read);
+        for (int i = 0; i < a; i++)
+        {
+            str = sR.ReadLine();
+        }
+        Text TX = text.GetComponent<Text>();
+        TX.text = str;
+        Debug.Log(str);
+        sR.Close();
+        read.Close();
+        
     }
     public void creatButton()
     {
-        string str;
-        FileStream read = new FileStream("da.txt", FileMode.Open);
+        string str="0";
+        FileStream read = new FileStream("buN.txt", FileMode.Open);
         StreamReader sR = new StreamReader(read);
-        str = sR.ReadLine();
+        for (int i = 0; i < a; i++)
+        {
+            str = sR.ReadLine();
+        }
         Debug.Log(str);
         sR.Close();
         read.Close();
@@ -67,52 +90,48 @@ public class CharClic : MonoBehaviour
         GameObject b;
         StreamReader sR1 = new StreamReader(read1);
         buttonOR = GameObject.Find("B");
+        for(int i = 1*5;i<a*5;i++)
+        {
+            str = sR1.ReadLine();
+        }
         for (int i = 0; i < num; i++)
         {
-
             str = sR1.ReadLine();
             Debug.Log(str);
-            
-
             b = Instantiate(buttonOR);
-
             b.transform.parent = GameObject.Find("talk").transform;
             b.transform.Translate(new Vector3((float)196.5, 400 + i * 50, 30));
             b.name = namestr[i];
-
             GameObject text = GameObject.Find("Text");
             Text tex = b.GetComponentInChildren<Text>();
             tex.text = str;
-
         }
         sR1.Close();
         read1.Close();
-        buttonOR.SetActive(false);
     }
-    public void button(int a)
+    public void buttonUpdate()
     {
-        Debug.Log("LAS:"+a);
-        FileStream read = new FileStream("da.txt", FileMode.Create);
-        StreamWriter sw = new StreamWriter(read);
-        sw.WriteLine(a);
-        sw.Close();
+        string str = "0";
+        FileStream read = new FileStream("buN.txt", FileMode.Open);
+        StreamReader sR = new StreamReader(read);
+        for (int i = 0; i < a; i++)
+        {
+            str = sR.ReadLine();
+        }
+        sR.Close();
         read.Close();
-        // SceneManager.LoadScene("test");
+        int num = int.Parse(str);
+        string[] namestr = new string[5] { "0", "2", "3", "4", "5" };
+        GameObject b;
+        Debug.Log("개수"+num);
+        for (int i = 0; i < 5; i++)
+        {
+            b = GameObject.Find(namestr[i]);
+            DestroyObject(b);
+        }
+        GameObject buttonOR;
+        buttonOR = GameObject.Find("B");
     }
-    /*
-    public void button2()
-    {
-        Debug.Log("LAS:2");
-        FileStream read = new FileStream("da.txt", FileMode.Create);
-        StreamWriter sw = new StreamWriter(read);
-        sw.WriteLine(2);
-        sw.Close();
-        read.Close();
-        SceneManager.LoadScene("test");
-    }
-  */
-
-    // Update is called once per frame
     void Update()
     {
 
