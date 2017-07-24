@@ -75,14 +75,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CharClic.cs" />
-    <Compile Include="Assets\clic.cs" />
-    <Compile Include="Assets\click.cs" />
-    <Compile Include="Assets\dragTuto.cs" />
-    <Compile Include="Assets\gaguF.cs" />
-    <Compile Include="Assets\number.cs" />
-    <Compile Include="Assets\offga.cs" />
-    <Compile Include="Assets\onOff.cs" />
+    <Compile Include="Assets\New SC\DecorationClick.cs" />
+    <Compile Include="Assets\New SC\DragInMainHouse.cs" />
+    <Compile Include="Assets\New SC\OnClickObject.cs" />
+    <Compile Include="Assets\New SC\characterClick.cs" />
+    <Compile Include="Assets\New SC\outUiinUi.cs" />
+    <Compile Include="Assets\SC\CharClic.cs" />
+    <Compile Include="Assets\SC\clic.cs" />
+    <Compile Include="Assets\SC\click.cs" />
+    <Compile Include="Assets\SC\dragTuto.cs" />
+    <Compile Include="Assets\SC\gaguF.cs" />
+    <Compile Include="Assets\SC\number.cs" />
+    <Compile Include="Assets\SC\offga.cs" />
+    <Compile Include="Assets\SC\onOff.cs" />
     <Compile Include="Assets\tutorial\creatButtonAsDynamical.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
