@@ -17,6 +17,7 @@ public class DragInMainHouse : MonoBehaviour {
             mainCamera.transform.position += (new Vector3(-mouseW / 4, 0, 0));
         else if (Xdegrees <= -6 && -mouseW > 0)
             mainCamera.transform.position += (new Vector3(-mouseW / 4, 0, 0));
+        
     }
     private void OnMouseUp()
     {
@@ -29,5 +30,6 @@ public class DragInMainHouse : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-	}
+      
+    }
 }

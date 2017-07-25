@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,35 +7,59 @@ public class DecorationClick : MonoBehaviour {
     public GameObject UiCan;
     public GameObject open;
    // public GameObject backPicture;
-    public Animation an;
+    public Animation OpenAnimation;
+    static bool count = false;
+    public Animation PopUp;
     // Use this for initialization
     void Start () {
 		
 	}
+    private void OnMouseUp()
+    {
+        
+    }
     private void OnMouseDown()
     {
         GetComponentInParent<BoxCollider2D>().enabled = false;
+        GetComponentInParent<PolygonCollider2D>().enabled = false;
         UiCan.SetActiveRecursively(true);
         open.SetActive(false);
-        an.Play(AnimationPlayMode.Queue);
+        OpenAnimation.Play(AnimationPlayMode.Queue);
+        count = false;
     }
-    private void OnMouseExit()
+    public void decorateOutex()
     {
-        GetComponentInParent<BoxCollider2D>().enabled = false;
+        
+        if (count)
+            OpenAnimation.Play("exitlast 1", AnimationPlayMode.Queue);
+        else
+            OpenAnimation.Play("exitlast", AnimationPlayMode.Queue);
+        
+        decorateOut();
+    }
+    
+    IEnumerator stay()
+    {
+
+        yield return new WaitForSecondsRealtime(2.2f);
+
     }
     public void decorateOut()
     {
         GetComponentInParent<BoxCollider2D>().enabled = true;
-        UiCan.SetActiveRecursively(false);
+        GetComponentInParent<PolygonCollider2D>().enabled = true;
     }
     public void enteropen(Animation animation)
     {
-        open.SetActive(true);
-        //animation.Play(AnimationPlayMode.Queue);
 
+        GetComponent<PolygonCollider2D>().enabled = false;
+        OpenAnimation.Play("exit", AnimationPlayMode.Queue);
+        open.SetActive(true);
+        PopUp.Play();
+        count = true;
     } 
     // Update is called once per frame
     void Update () {
-		
+     
 	}
 }
