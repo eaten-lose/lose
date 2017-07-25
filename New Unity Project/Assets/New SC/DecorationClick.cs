@@ -6,7 +6,9 @@ using UnityEngine;
 public class DecorationClick : MonoBehaviour {
     public GameObject UiCan;
     public GameObject open;
-   // public GameObject backPicture;
+    static float time;
+    static float timeX;
+    // public GameObject backPicture;
     public Animation OpenAnimation;
     static bool count = false;
     public Animation PopUp;
@@ -26,16 +28,19 @@ public class DecorationClick : MonoBehaviour {
         open.SetActive(false);
         OpenAnimation.Play(AnimationPlayMode.Queue);
         count = false;
+        timeX = time + (float)0.6;
     }
     public void decorateOutex()
     {
-        
+        if(time > timeX)
+        { 
         if (count)
             OpenAnimation.Play("exitlast 1", AnimationPlayMode.Queue);
         else
             OpenAnimation.Play("exitlast", AnimationPlayMode.Queue);
         
         decorateOut();
+        }
     }
     
     IEnumerator stay()
@@ -60,6 +65,6 @@ public class DecorationClick : MonoBehaviour {
     } 
     // Update is called once per frame
     void Update () {
-     
+        time = Time.time;
 	}
 }
