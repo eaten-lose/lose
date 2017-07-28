@@ -5,18 +5,19 @@ using UnityEngine;
 public class OnClickObject : MonoBehaviour {
     public BoxCollider2D COl;
     public GameObject ef;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    static Vector2 mouse_position;
+    // Use this for initialization
+    void Start () {
+        mouse_position = Vector2.zero;
+    }
     private void OnMouseDown()
     {
-        Vector3 a = Input.mousePosition;
         COl.enabled = false;
-        ef.GetComponent<Transform>().TransformPoint(a);
-        ef.active = true;
+        
+        
+        
 
-        ef.active = false;
+        
     }
     private void OnMouseExit()
     {
@@ -24,6 +25,8 @@ public class OnClickObject : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-		
-	}
+
+        mouse_position = Input.mousePosition;
+     //   Debug.Log(mouse_position);
+    }
 }
